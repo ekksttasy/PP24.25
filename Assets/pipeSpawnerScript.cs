@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class pipeSpawnerScript : MonoBehaviour
 {
-    public LogicScript logic;
+    public GameObject gameOverScreen;
     public GameObject pipe;
     public float spawnRate = 4;
     private float timer = 0;
@@ -18,20 +16,18 @@ public class pipeSpawnerScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-       // if (logic.gameOverScreen = isActiveAndEnabled)
+    {   //while (!gameOverScreen.activeInHierarchy)
         {
-
+            if (timer < spawnRate)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                spawnPipe();
+                timer = 0;
+            }
         }
-        if (timer < spawnRate)
-        {
-            timer += Time.deltaTime;
-        }else
-        {
-            spawnPipe();
-            timer = 0;
-        }
-
         
     }
 
