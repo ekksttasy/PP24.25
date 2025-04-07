@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
-    public void GameStart() => SceneManager.LoadScene("SinglePlayer");
+    public void GameStart() => SceneManager.LoadScene("SinglePlayerPipes");
     public void MultiplayerStart() => SceneManager.LoadScene("ServerList");
 
     public void QuitGame()

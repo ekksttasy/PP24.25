@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class pipeSpawnerScript : MonoBehaviour
 {
+    public LogicScript logic;
     public GameObject pipe;
     public float spawnRate = 4;
     private float timer = 0;
@@ -18,6 +19,10 @@ public class pipeSpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       // if (logic.gameOverScreen = isActiveAndEnabled)
+        {
+
+        }
         if (timer < spawnRate)
         {
             timer += Time.deltaTime;
