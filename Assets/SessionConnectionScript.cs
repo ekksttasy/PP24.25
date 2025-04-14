@@ -17,6 +17,7 @@ public class SessionConnectionScript : MonoBehaviour
     private ConnectionState state = ConnectionState.Disconnected;
     private ISession session;
     private NetworkManager NetworkManager;
+    public PlayerManagerScript playerManager;
 
     private enum ConnectionState
     {
@@ -64,7 +65,7 @@ public class SessionConnectionScript : MonoBehaviour
         if (NetworkManager.LocalClientId == clientId)
         {
             Debug.Log($"Client-{clientId} is connected");
-            
+            playerManager.listPlayer(playerName);
         }
     }
 
@@ -73,6 +74,7 @@ public class SessionConnectionScript : MonoBehaviour
         if (NetworkManager.LocalClient.IsSessionOwner)
         {
             Debug.Log($"Client-{NetworkManager.LocalClientId} is the party leader");
+            playerManager.listPlayer(playerName);
         }
     }
 

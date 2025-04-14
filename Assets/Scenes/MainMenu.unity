@@ -1043,7 +1043,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 438681703}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: MultiplayerStart
+        m_MethodName: LobbyStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

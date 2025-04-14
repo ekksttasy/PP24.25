@@ -5,7 +5,12 @@ using UnityEngine.SceneManagement;
 public class MainMenuScript : MonoBehaviour
 {
     public void GameStart() => SceneManager.LoadScene("SinglePlayerPipes");
-    public void MultiplayerStart() => SceneManager.LoadScene("ServerList");
+
+    public void LobbyStart() => SceneManager.LoadScene("ServerList");
+    public void MultiplayerStart() => SceneManager.LoadScene("MultiplayerPipes");
+
+    public void ReturnToMenu() => SceneManager.LoadScene("MainMenu");
+
 
     public void QuitGame()
     {
