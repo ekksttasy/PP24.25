@@ -7,18 +7,29 @@ public class MainMenuScript : MonoBehaviour
     public void GameStart() => SceneManager.LoadScene("SinglePlayerPipes");
 
     public void LobbyStart() => SceneManager.LoadScene("ServerList");
-    public void MultiplayerStart() => SceneManager.LoadScene("MultiplayerPipes");
-
-    public void Restart()
+    public void MultiplayerStart()
     {
-        if (SceneManager.GetActiveScene().name == "SinglePlayerPipes")
-        {
-            SceneManager.LoadScene("SinglePlayerPipes");
-        }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerPipes")
+        var _session = FindFirstObjectByType<SessionConnectionScript>();
+        if (_session != null && _session.CurrentConnectionState == "Connected")
         {
             SceneManager.LoadScene("MultiplayerPipes");
         }
+        else
+        {
+            Debug.Log("No session found, join a lobby!");
+        }
+    }
+
+    public void Restart()
+    {
+         if (SceneManager.GetActiveScene().name == "SinglePlayerPipes")
+         {
+            SceneManager.LoadScene("SinglePlayerPipes");
+         }
+         else if (SceneManager.GetActiveScene().name == "MultiplayerPipes")
+         {
+            SceneManager.LoadScene("MultiplayerPipes");
+         }
     }
 
     public void ReturnToMenu()

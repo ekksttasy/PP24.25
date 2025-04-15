@@ -6,6 +6,7 @@ using Unity.Services.Core;
 using System.Threading.Tasks;
 using Unity.Services.Authentication;
 using System;
+using UnityEngine.UI;
 
 public class SessionConnectionScript : MonoBehaviour
 {
@@ -13,13 +14,15 @@ public class SessionConnectionScript : MonoBehaviour
     public int playerCount;
     private int maxPlayers = 4;
     private string lobbyName;
+    public Text LoadedLobby;
 
     private ConnectionState state = ConnectionState.Disconnected;
+    public string CurrentConnectionState => state.ToString();
     private ISession session;
     private NetworkManager NetworkManager;
     public PlayerManagerScript playerManager;
 
-    private enum ConnectionState
+    public enum ConnectionState
     {
         Disconnected,
         Connecting,
@@ -72,7 +75,9 @@ public class SessionConnectionScript : MonoBehaviour
         if (NetworkManager.LocalClientId == clientId)
         {
             Debug.Log($"Client-{clientId} is connected");
-            playerManager.listPlayer(playerName);
+            playerManager.listPlayers(playerName);
+            LoadedLobby.text = "Connected to: " + lobbyName;
+            playerCount += 1;
         }
     }
 
@@ -81,7 +86,6 @@ public class SessionConnectionScript : MonoBehaviour
         if (NetworkManager.LocalClient.IsSessionOwner)
         {
             Debug.Log($"Client-{NetworkManager.LocalClientId} is the party leader");
-            playerManager.listPlayer(playerName);
         }
     }
 
@@ -108,6 +112,11 @@ public class SessionConnectionScript : MonoBehaviour
             state = ConnectionState.Disconnected;
             Debug.LogException(e);
         }
+    }
+
+    public ConnectionState GetConnectionState()
+    {
+        return state;
     }
 
     public void Disconnect()

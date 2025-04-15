@@ -5,7 +5,7 @@ public class PlayerManagerScript : MonoBehaviour
 {
     public Text playerList;
 
-    public void listPlayer(string playerName)
+    public void listPlayers(string playerName)
     {
         playerList.text += playerName + "\n";
     }
