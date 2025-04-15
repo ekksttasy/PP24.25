@@ -44,6 +44,12 @@ public class birdScript : MonoBehaviour
         }
     }
 
+    public static void ResetBirdPosition()
+    {
+        //TODO: fix birb position reset
+        //birbBody.transform.position = Vector2.zero;
+    }
+
     private void setLogicScript()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
@@ -51,7 +57,16 @@ public class birdScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        logic.GameOver();
-        birdIsLive = false;
+        if(birbBody.IsTouchingLayers(8))
+        {
+            //bounce
+            birbBody.linearVelocity = Vector2.up * (flapStrength/4);
+        }
+        else
+        {
+            // dead birb (touched pipes)
+            logic.GameOver();
+            birdIsLive = false;
+        }
     }
 }

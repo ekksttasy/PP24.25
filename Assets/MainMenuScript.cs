@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static birdScript;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -9,10 +10,12 @@ public class MainMenuScript : MonoBehaviour
     public void LobbyStart() => SceneManager.LoadScene("ServerList");
     public void MultiplayerStart()
     {
+        // Ensures lobby exists to join & player is owner
         var _session = FindFirstObjectByType<SessionConnectionScript>();
         if (_session != null && _session.CurrentConnectionState == "Connected" && _session.IsOwner)
         {
             SceneManager.LoadScene("MultiplayerPipes");
+            birdScript.ResetBirdPosition();
         }
         else
         {

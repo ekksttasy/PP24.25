@@ -748,6 +748,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6345163868196872486, guid: f36005103a63b0d499ee3d9dd895c273, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3173754117
+      objectReference: {fileID: 0}
     - target: {fileID: 6626352884336125219, guid: f36005103a63b0d499ee3d9dd895c273, type: 3}
       propertyPath: m_Name
       value: bird
@@ -795,8 +799,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6626352884336125219, guid: f36005103a63b0d499ee3d9dd895c273, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8049177353768047816}
   m_SourcePrefab: {fileID: 100100000, guid: f36005103a63b0d499ee3d9dd895c273, type: 3}
+--- !u!1 &8049177353768047815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6626352884336125219, guid: f36005103a63b0d499ee3d9dd895c273, type: 3}
+  m_PrefabInstance: {fileID: 8049177353768047814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8049177353768047816
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8049177353768047815}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0b33af629288714cbb4c6272c34fb01, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
