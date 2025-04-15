@@ -9,6 +9,8 @@ public class birdScript : MonoBehaviour
     public float flapStrength;
     public LogicScript logic;
     public bool birdIsLive = true;
+    public bool inLobby = false;
+    public bool inMultiplayer = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,17 +26,21 @@ public class birdScript : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "ServerList")
         {
+            inLobby = true;
             birbBody.gravityScale = 0;
-        }
-
-        if (SceneManager.GetActiveScene().name == "MultiplayerPipes")
+        }else if (SceneManager.GetActiveScene().name == "MultiplayerPipes")
         {
+            inMultiplayer = true;
             birbBody.gravityScale = 20;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && birdIsLive && SceneManager.GetActiveScene().name != "ServerList")
+        } else
         {
-            birbBody.linearVelocity = Vector2.up * flapStrength;
+            inLobby = false;
+            inMultiplayer = false;
+
+            if (Input.GetKeyDown(KeyCode.Space) && birdIsLive)
+            {
+                birbBody.linearVelocity = Vector2.up * flapStrength;
+            }
         }
     }
 

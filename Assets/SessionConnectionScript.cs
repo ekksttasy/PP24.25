@@ -79,6 +79,23 @@ public class SessionConnectionScript : MonoBehaviour
             playerManager.listPlayers(playerName);
             LoadedLobby.text = "Connected to: " + lobbyName;
             playerCount += 1;
+            if (playerCount == maxPlayers)
+            {
+                Debug.Log("Lobby is full");
+                state = ConnectionState.Disconnected;
+            }
+            if (!NetworkManager.LocalClient.IsSessionOwner)
+            {
+                foreach (var client in NetworkManager.ConnectedClients)
+                {
+                    if (client.Key != NetworkManager.LocalClientId)
+                    {
+                        //TODO: tie clientids+playernames in dict
+                        //Debug.Log($"Client-{client.Key} ({client.Value.playerName}) is connected");
+                        //playerManager.listPlayers(client.Value.playerName);
+                    }
+                }
+            }
         }
     }
 
@@ -123,6 +140,8 @@ public class SessionConnectionScript : MonoBehaviour
     public void Disconnect()
     {
         state = ConnectionState.Teardown;
+        playerManager.removePlayer(playerName);
+        playerCount -= 1;
     }
 
     private void OnDestroy()
