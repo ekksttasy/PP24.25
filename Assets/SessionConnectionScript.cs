@@ -103,6 +103,11 @@ public class SessionConnectionScript : MonoBehaviour
         }
     }
 
+    public void Disconnect()
+    {
+        state = ConnectionState.Disconnected;
+    }
+
     private void OnDestroy()
     {
         session?.LeaveAsync();

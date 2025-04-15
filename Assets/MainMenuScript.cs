@@ -9,8 +9,21 @@ public class MainMenuScript : MonoBehaviour
     public void LobbyStart() => SceneManager.LoadScene("ServerList");
     public void MultiplayerStart() => SceneManager.LoadScene("MultiplayerPipes");
 
-    public void ReturnToMenu() => SceneManager.LoadScene("MainMenu");
+    public void Restart()
+    {
 
+    }
+
+    public void ReturnToMenu()
+    {
+        var _session = FindFirstObjectByType<SessionConnectionScript>();
+        if (_session != null)
+        {
+            _session.Disconnect();
+        }
+
+        SceneManager.LoadScene("MainMenu");
+    }
 
     public void QuitGame()
     {
@@ -19,17 +32,5 @@ public class MainMenuScript : MonoBehaviour
         #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
         #endif
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

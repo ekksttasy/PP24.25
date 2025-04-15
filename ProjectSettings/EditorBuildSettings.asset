@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ServerList.unity
     guid: d54eddee913d09f448640fbc181ff440
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerPipes.unity
+    guid: 01e3718b4364ef7438e6399dff197b48
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
