@@ -10,7 +10,7 @@ public class MainMenuScript : MonoBehaviour
     public void MultiplayerStart()
     {
         var _session = FindFirstObjectByType<SessionConnectionScript>();
-        if (_session != null && _session.CurrentConnectionState == "Connected")
+        if (_session != null && _session.CurrentConnectionState == "Connected" && _session.IsOwner)
         {
             SceneManager.LoadScene("MultiplayerPipes");
         }

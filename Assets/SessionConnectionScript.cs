@@ -18,6 +18,7 @@ public class SessionConnectionScript : MonoBehaviour
 
     private ConnectionState state = ConnectionState.Disconnected;
     public string CurrentConnectionState => state.ToString();
+    public bool IsOwner => NetworkManager.LocalClient.IsSessionOwner;
     private ISession session;
     private NetworkManager NetworkManager;
     public PlayerManagerScript playerManager;
@@ -74,7 +75,7 @@ public class SessionConnectionScript : MonoBehaviour
     {
         if (NetworkManager.LocalClientId == clientId)
         {
-            Debug.Log($"Client-{clientId} is connected");
+            Debug.Log($"Client-{clientId} ({playerName}) is connected");
             playerManager.listPlayers(playerName);
             LoadedLobby.text = "Connected to: " + lobbyName;
             playerCount += 1;
@@ -85,7 +86,7 @@ public class SessionConnectionScript : MonoBehaviour
     {
         if (NetworkManager.LocalClient.IsSessionOwner)
         {
-            Debug.Log($"Client-{NetworkManager.LocalClientId} is the party leader");
+            Debug.Log($"Client-{NetworkManager.LocalClientId} ({playerName}) is the party leader");
         }
     }
 
