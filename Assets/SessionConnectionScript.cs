@@ -23,7 +23,8 @@ public class SessionConnectionScript : MonoBehaviour
     {
         Disconnected,
         Connecting,
-        Connected
+        Connected,
+        Teardown
     }
 
     private async void Awake()
@@ -36,6 +37,12 @@ public class SessionConnectionScript : MonoBehaviour
 
     private void OnGUI()
     {
+        if (state == ConnectionState.Teardown)
+        {
+            GUI.enabled = false;
+            return;
+        }
+
         if (state == ConnectionState.Connected)
             return;
 
@@ -105,7 +112,7 @@ public class SessionConnectionScript : MonoBehaviour
 
     public void Disconnect()
     {
-        state = ConnectionState.Disconnected;
+        state = ConnectionState.Teardown;
     }
 
     private void OnDestroy()

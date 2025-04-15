@@ -11,15 +11,25 @@ public class MainMenuScript : MonoBehaviour
 
     public void Restart()
     {
-
+        if (SceneManager.GetActiveScene().name == "SinglePlayerPipes")
+        {
+            SceneManager.LoadScene("SinglePlayerPipes");
+        }
+        else if (SceneManager.GetActiveScene().name == "MultiplayerPipes")
+        {
+            SceneManager.LoadScene("MultiplayerPipes");
+        }
     }
 
     public void ReturnToMenu()
     {
         var _session = FindFirstObjectByType<SessionConnectionScript>();
         if (_session != null)
-        {
+        {   // Hides GUI
             _session.Disconnect();
+
+            // Destroys SessionManager (?)
+            Destroy(_session.gameObject);
         }
 
         SceneManager.LoadScene("MainMenu");
