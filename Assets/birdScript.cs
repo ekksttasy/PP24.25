@@ -27,7 +27,7 @@ public class birdScript : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "ServerList")
         {
             inLobby = true;
-            birbBody.gravityScale = 0;
+            birbBody.gravityScale = 10;
         }else if (SceneManager.GetActiveScene().name == "MultiplayerPipes")
         {
             inMultiplayer = true;
